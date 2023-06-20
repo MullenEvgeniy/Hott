@@ -1,0 +1,23 @@
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+    // ограничить параметр результат через дни, чтобы обеспечить легкость возвращаемого набора данных
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://api.openweathermap.org/surfreport/25&days=1",
+      "method": "GET"
+    }
+
+    // используйте метод ajax для разрешения асинхронных вызовов, которые не будут блокировать загрузку страницы
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+      $("#surfheight").append(response.surfreport.conditions);
+    });
+    </script>
+</head>
+<body>
+    <h2>Surf Height</h2>
+    <div id="surfheight"></div>
+</body>
+</html>
